@@ -13,9 +13,28 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
-    return view('welcome');
+    $data = [
+        'menu' => [
+            'contatti',
+            'blog',
+            'maps'
+        ]
+    ];
+
+    dump($data);
+
+    return view('home', $data);
+})->name('/');
+
+
+Route::get('/blog', function () {
+    return view('menu.blog');
 });
-Route::get('/home', function () {
-    return view('home');
+Route::get('/maps', function () {
+    return view('menu.maps');
+});
+Route::get('/contatti', function () {
+    return view('menu.contacts');
 });
